@@ -1,14 +1,18 @@
-import React from "react";
+import React, {useState,useEffect}from "react";
+import PoemsContainer from "./PoemsContainer";
+import NewPoemForm from "./NewPoemForm";
 
-function NewPoemForm() {
-  return (
-    <form className="new-poem-form">
-      <input placeholder="Title" />
-      <input placeholder="Author" />
-      <textarea placeholder="Write your masterpiece here..." rows={10} />
-      <input type="submit" value="Share your masterpiece" />
-    </form>
-  );
+function App(){
+const [show,setShow] = useState (true)
+const [poems, setPoems] =useState ([]);
+
+
+useEffect (()=>{
+  fetch("http://localhost:8004/poems")
+  .then ((res) => res.json())
+  .then ((data) => setPoems(data));
+},[]);
+
 }
 
 export default NewPoemForm;
