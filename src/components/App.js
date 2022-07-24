@@ -14,7 +14,7 @@ function App(){
   },[]);
   
 
-  function handleClick(){
+  function handleHideClick(){
     console.log(show)
     setShow(!show)
   }
